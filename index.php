@@ -1,17 +1,4 @@
-
 <?php
-/*
-$date =  date('Y-m-d', time());
-echo "The value of \$date: ".$date."<br>";
-
-$tar = "2017/05/24";
-echo "The value of \$tar: ".$tar."<br>";
-
-$year = array("2012", "396", "300","2000", "1100", "1089");
-echo "The value of \$year: ";
-print_r($year)
-*/
-
 
 $obj = new main();
 
@@ -23,34 +10,32 @@ class main {
    public function __construct() {
    
    $date =  date('Y-m-d', time());
-   
-   $tar = "2017/05/24";
-  
+   $tar = "2017/05/24"; 
    $year = array("2012", "396", "300","2000", "1100", "1089");
 
-
 //1   
-   $this->html .= htmlTags::headingOne("Replace - in \$date with /");
+   $this->html .= htmlTags::headingOne("2. Replace - in \$date with /");
    $this->html .= stringFunctions::replace("-", "/", $date);
+   $this->html .= htmlTags::horizontalRule();
+
+//2
+   $this->html .= htmlTags::headingOne("3. Compare \$date with \$tar");
+   $this->html .= ifFunction::ifElse(strtotime($tar)-strtotime($date)>0, "the future", 
+    strtotime($tar)-strtotime($date)<0, "the past", strtotime($tar)-strtotime($date)==0, "Oops!");
+   $this->html .= htmlTags::horizontalRule();
 
    }
-//End
-   
+
+
+
+//End   
    public function __destruct() {
    
    $this->html .= stringFunctions::printThis($this->html);
    }
 
-
    
 }
-
-
-
-
-
-
-
 
 
 
@@ -91,4 +76,37 @@ class main {
   
   
   }
+
+
+
+  class ifFunction {
+  
+     static public function ifElse ($input1, $output1, $input2, $output2, $input3, $output3) {
+     
+     if ($input) {
+
+                return $output1;
+     } elseif ($input2) {
+     
+                return $output2;
+     } elseif ($input3) {
+     
+                return $output3;
+     }
+     
+     }
+
+/*
+  class otherFunctions {
+
+
+     static public function compareDate () {
+     
+     return strtotime($tar)-strtotime($date);
+     
+     }
+*/ 
+ 
+ } 
+ 
 ?>
