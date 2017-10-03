@@ -46,6 +46,12 @@ class main {
    $this->html .= stringFunctions::ordFunction($newDate);
    $this->html .= htmlTags::horizontalRule();
 
+
+//8
+   $this->html .= htmlTags::headingOne("8. Return the last two characters");
+   $this->html .= stringFunctions::subString($date, -2);
+   $this->html .= htmlTags::horizontalRule();
+
    }
 
    
@@ -116,6 +122,14 @@ class main {
     return ord($input);
     
     }
+
+
+    static public function subString ($input1, $input2) {
+    
+    return substr($input1, $input2);
+    
+    }
+
   }
 
 
