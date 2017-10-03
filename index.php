@@ -52,14 +52,23 @@ class main {
    $this->html .= stringFunctions::subString($date, -2);
    $this->html .= htmlTags::horizontalRule();
 
+
+//9
+   $this->html .= htmlTags::headingOne("9. Break \$date ");
+   $array = stringFunctions::explodeFunction("/", $newDate);
+   $this->html .= stringFunctions::printThis1($array, true);
+   $this->html .= htmlTags::horizontalRule();
+
+
    }
 
    
 
 //End   
-   public function __destruct() {
+   public function __destruct() {   
    
    $this->html .= stringFunctions::printThis($this->html);
+
    }
 
    
@@ -91,9 +100,17 @@ class main {
 
     static public function printThis ($input) {
     
-    return print($input);
+    return print_r($input);
     
     }
+
+//print_r true
+     static public function printThis1 ($input1, $input2) {
+
+     return print_r($input1, $input2);
+
+    }
+
 
 
     static public function replace ($input1, $input2, $input3) {
@@ -130,6 +147,26 @@ class main {
     
     }
 
+
+    static public function explodeFunction ($input1, $input2) {
+    
+    return explode($input1, $input2);
+    
+    }
+
+
+    static public function print_rFunction ($input) {
+    
+    return print_r($input);
+    
+    }
+
+
+    static public function arrayValues ($input) {
+    
+    return array_values($input);
+    
+    }
   }
 
 
