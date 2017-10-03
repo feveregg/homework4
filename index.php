@@ -41,6 +41,10 @@ class main {
    $this->html .= htmlTags::horizontalRule();
 
 
+//7
+   $this->html .= htmlTags::headingOne("7. Return the ASCII value of the first character");
+   $this->html .= stringFunctions::ordFunction($newDate);
+   $this->html .= htmlTags::horizontalRule();
 
    }
 
@@ -103,6 +107,13 @@ class main {
     static public function stringLength ($input) {
     
     return strlen($input);
+    
+    }
+
+
+    static public function ordFunction ($input) {
+    
+    return ord($input);
     
     }
   }
