@@ -21,8 +21,8 @@ class main {
 
 //3
    $this->html .= htmlTags::headingOne(" Compare \$date with \$tar");
-   $this->html .= ifFunction::ifElse(strtotime($tar)-strtotime($date)>0, "the future", 
-    strtotime($tar)-strtotime($date)<0, "the past", strtotime($tar)-strtotime($date)==0, "Oops!");
+   $this->html .= ifFunction::ifElse(strtotime($date)-strtotime($tar)>0, "the future", 
+    strtotime($date)-strtotime($tar)<0, "the past", strtotime($date)-strtotime($tar)==0, "Oops!");
    $this->html .= htmlTags::horizontalRule();
 
 //4
