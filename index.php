@@ -15,50 +15,51 @@ class main {
    
 
 //2   
-   $this->html .= htmlTags::headingOne("2. Replace - in \$date with /");
+   $this->html .= htmlTags::headingOne(" Replace - in \$date with /");
    $this->html .= stringFunctions::replace("-", "/", $date);
    $this->html .= htmlTags::horizontalRule();
 
 //3
-   $this->html .= htmlTags::headingOne("3. Compare \$date with \$tar");
+   $this->html .= htmlTags::headingOne(" Compare \$date with \$tar");
    $this->html .= ifFunction::ifElse(strtotime($tar)-strtotime($date)>0, "the future", 
     strtotime($tar)-strtotime($date)<0, "the past", strtotime($tar)-strtotime($date)==0, "Oops!");
    $this->html .= htmlTags::horizontalRule();
 
 //4
    $newDate = stringFunctions::replace("-", "/", $date);
-   $this->html .= htmlTags::headingOne("4. Search for / in \$date");
+   $this->html .= htmlTags::headingOne(" Search for / in \$date");
+   $this->html .= stringFunctions::searchFunction($newDate, "/");
    $this->html .= htmlTags::horizontalRule();
 
 //5
-   $this->html .= htmlTags::headingOne("5. Count the number of words");
-   $this->html .= stringFunctions::countWord($date);
+   $this->html .= htmlTags::headingOne(" Count the number of words");
+   $this->html .= stringFunctions::countWord($newDate);
    $this->html .= htmlTags::horizontalRule();
 
 //6
-   $this->html .= htmlTags::headingOne("6. Return the length of a string");
+   $this->html .= htmlTags::headingOne(" Return the length of a string");
    $this->html .= stringFunctions::stringLength($date);
    $this->html .= htmlTags::horizontalRule();
 
 
 //7
-   $this->html .= htmlTags::headingOne("7. Return the ASCII value of the first character");
+   $this->html .= htmlTags::headingOne(" Return the ASCII value of the first character");
    $this->html .= stringFunctions::ordFunction($newDate);
    $this->html .= htmlTags::horizontalRule();
 
 
 //8
-   $this->html .= htmlTags::headingOne("8. Return the last two characters");
+   $this->html .= htmlTags::headingOne(" Return the last two characters");
    $this->html .= stringFunctions::subString($date, -2);
    $this->html .= htmlTags::horizontalRule();
-
+   
 
 //9
-   $this->html .= htmlTags::headingOne("9. Break \$date ");
+   $this->html .= htmlTags::headingOne(" Break \$date ");
    $array = stringFunctions::explodeFunction("/", $newDate);
-   $this->html .= stringFunctions::printThis1($array, true);
+ //  $this->html .= stringFunctions::printThis1($array, true);
+   $this->html .= stringFunctions::implodeFunction(" ", $array);
    $this->html .= htmlTags::horizontalRule();
-
 
    }
 
@@ -68,7 +69,7 @@ class main {
    public function __destruct() {   
    
    $this->html .= stringFunctions::printThis($this->html);
-
+  
    }
 
    
@@ -80,7 +81,7 @@ class main {
 
     static public function horizontalRule() {
 
-    return "<hr>";
+    return "</br><hr>";
 
     }
 
@@ -91,6 +92,7 @@ class main {
 
     }
   
+    
 
   }
 
@@ -167,6 +169,31 @@ class main {
     return array_values($input);
     
     }
+
+
+    static public function searchFunction ($input1, $input2) {
+    
+    $positions = array();
+    $pos = -1;
+    while (($pos = strpos($input1, $input2, $pos+1)) !== false) {
+    
+        $positions[] = $pos;
+
+    }
+    
+    $result = implode(" ", $positions);
+    return $result;
+
+    }
+    
+
+
+    static public function implodeFunction ($input1, $input2) {
+    
+    return implode($input1, $input2);
+    
+    }
+
   }
 
 
@@ -175,7 +202,7 @@ class main {
   
      static public function ifElse ($input1, $output1, $input2, $output2, $input3, $output3) {
      
-     if ($input) {
+     if ($input1) {
 
                 return $output1;
      } elseif ($input2) {
@@ -187,34 +214,50 @@ class main {
      }
      
      }
-
-
-/*  
-  class loopFunction {
-  
-     static public function whileFunction ($input1, $input2) {
-     
-     while($input1) {
-     
-     return $input2; 
-    
-    } 
-     
-     }
-  
   }
 
-  class otherFunctions {
 
+  class loop {
+  
+     static public function forFunction ($input) {
+    
+      $aa = str_split($input);
 
-     static public function compareDate () {
+     for ($i = 0; $i < sizeof($aa) ; $i++ ) {
      
-     return strtotime($tar)-strtotime($date);
+      if($aa[$i] == "/") {
+      
+      return $i. " ";
+      
+      }
+
+     }
      
      }
-*/ 
- 
- } 
+  
+  }  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
