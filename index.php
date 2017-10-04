@@ -33,7 +33,7 @@ class main {
 
 //5
    $this->html .= htmlTags::headingOne(" Count the number of words");
-   $this->html .= stringFunctions::countWord($newDate);
+   $this->html .= stringFunctions::sizeFunction(stringFunctions::explodeFunction("/", $newDate));
    $this->html .= htmlTags::horizontalRule();
 
 //6
@@ -162,6 +162,14 @@ class main {
     return print_r($input);
     
     }
+
+    
+    static public function sizeFunction ($input) {
+    
+    return sizeof($input);
+    
+    }
+
 
 
     static public function arrayValues ($input) {
