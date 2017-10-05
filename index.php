@@ -11,7 +11,7 @@ class main {
    
    $date =  date('Y-m-d', time());
    $tar = "2017/05/24"; 
-   $year = array("2012", "396", "300","2000", "1100", "1089");
+   $year = array("2012", "396", "300", "2000", "1100", "1089");
    
 
 //2   
@@ -60,6 +60,22 @@ class main {
  //  $this->html .= stringFunctions::printThis1($array, true);
    $this->html .= stringFunctions::implodeFunction(" ", $array);
    $this->html .= htmlTags::horizontalRule();
+
+
+
+//10 
+   $this->html .= htmlTags::headingOne(" Leap Year foreach ");
+   $this->html .= loop::leapyear($year);
+//   $this->html .= stringFunctions::printThis1($year, true);
+   $this->html .= htmlTags::horizontalRule();
+
+
+//11
+   $this->html .= htmlTags::headingOne(" Leap Year for ");
+   $this->html .= loop::leapyear2($year);
+
+
+
 
    }
 
@@ -227,25 +243,52 @@ class main {
 
   class loop {
   
-     static public function forFunction ($input) {
-    
-      $aa = str_split($input);
-
-     for ($i = 0; $i < sizeof($aa) ; $i++ ) {
+     static public function leapyear ($input) {
+     $aaa = "";
      
-      if($aa[$i] == "/") {
-      
-      return $i. " ";
-      
-      }
-
+     foreach ($input as $y) {
+     
+     switch((($y % 4) == 0) && ((($y % 100) != 0) || (($y % 400) == 0))) {
+     
+     
+     
+     case 1: $aaa .= "True </br>";
+     break;
+     default: $aaa .= "False </br>";
+   
      }
      
+     
      }
-  
+     return $aaa;
+     
   }  
 
 
+
+    static public function leapyear2 ($input) {
+    $aaa = "";
+
+    for($i = 0; $i < sizeof($input); $i++) {
+    
+    switch((($input[$i] % 4) == 0) && ((($input[$i] % 100) != 0) || (($input[$i] % 400 == 0)))) {
+    
+    case 1: $aaa .= "True </br>";
+    break;
+    default: $aaa .= "False </br>";
+    
+    }
+    
+    }
+    
+    return $aaa;
+    }
+
+
+
+
+
+}
 
 
 
