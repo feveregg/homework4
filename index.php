@@ -252,9 +252,9 @@ class main {
      
      
      
-     case 1: $aaa .= "True </br>";
+     case 1: $aaa .= " True";
      break;
-     default: $aaa .= "False </br>";
+     default: $aaa .= " False";
    
      }
      
@@ -273,9 +273,9 @@ class main {
     
     switch((($input[$i] % 4) == 0) && ((($input[$i] % 100) != 0) || (($input[$i] % 400 == 0)))) {
     
-    case 1: $aaa .= "True </br>";
+    case 1: $aaa .= " True";
     break;
-    default: $aaa .= "False </br>";
+    default: $aaa .= " False";
     
     }
     
